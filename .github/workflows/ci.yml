@@ -1,0 +1,23 @@
+name: CI                      # label shown in the GitHub Actions tab
+on: [push, pull_request]      # WHEN to run: on every push and every pull request
+
+jobs:                         # a workflow has one or more jobs
+  build:                      # our job is called "build" (we chose this name)
+    runs-on: ubuntu-latest    # WHERE to run: a fresh Linux machine from GitHub
+
+    steps:                    # the job is a list of steps, run in order
+      - uses: actions/checkout@v4          # ready-made action: download your repo onto the machine
+        with:
+          fetch-depth: 0       # download the full git history (needed in Lab 4 for git diff)
+
+      - uses: actions/setup-python@v5       # ready-made action: install Python
+        with:
+          python-version: '3.12'
+
+      - run: pip install -r requirements.txt   # run a shell command
+
+      - name: Run tests
+        run: |
+          # the | means multi-line commands follow
+          set -o pipefail          # if pytest fails, the whole step fails
+          pytest 2>&1 | tee build.log   # run tests, show output AND save it to build.log
