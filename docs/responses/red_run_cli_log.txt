@@ -1,0 +1,37 @@
+build	Run tests	﻿2026-10-14T07:18:21.0818731Z ##[group]Run # the | means multi-line commands follow
+build	Run tests	2026-10-14T07:18:21.0819271Z [36;1m# the | means multi-line commands follow[0m
+build	Run tests	2026-10-14T07:18:21.0819764Z [36;1mset -o pipefail          # if pytest fails, the whole step fails[0m
+build	Run tests	2026-10-14T07:18:21.0820374Z [36;1mpytest 2>&1 | tee build.log   # run tests, show output AND save it to build.log[0m
+build	Run tests	2026-10-14T07:18:21.0888731Z shell: /usr/bin/bash -e {0}
+build	Run tests	2026-10-14T07:18:21.0889064Z env:
+build	Run tests	2026-10-14T07:18:21.0889421Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+build	Run tests	2026-10-14T07:18:21.0889977Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+build	Run tests	2026-10-14T07:18:21.0890528Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+build	Run tests	2026-10-14T07:18:21.0891015Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+build	Run tests	2026-10-14T07:18:21.0891499Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+build	Run tests	2026-10-14T07:18:21.0892286Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+build	Run tests	2026-10-14T07:18:21.0892791Z ##[endgroup]
+build	Run tests	2026-10-14T07:18:21.3784449Z ============================= test session starts ==============================
+build	Run tests	2026-10-14T07:18:21.3785260Z platform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.6.0
+build	Run tests	2026-10-14T07:18:21.3785904Z rootdir: /home/runner/work/smartci/smartci
+build	Run tests	2026-10-14T07:18:21.3786345Z configfile: pytest.ini
+build	Run tests	2026-10-14T07:18:21.3786696Z collected 9 items
+build	Run tests	2026-10-14T07:18:21.3786890Z 
+build	Run tests	2026-10-14T07:18:21.3802537Z tests/test_cart.py ..                                                    [ 22%]
+build	Run tests	2026-10-14T07:18:21.3825329Z tests/test_inventory.py ...                                              [ 55%]
+build	Run tests	2026-10-14T07:18:21.4139281Z tests/test_pricing.py .F..                                               [100%]
+build	Run tests	2026-10-14T07:18:21.4140134Z 
+build	Run tests	2026-10-14T07:18:21.4140733Z =================================== FAILURES ===================================
+build	Run tests	2026-10-14T07:18:21.4141541Z ___________________________ test_discount_boundaries ___________________________
+build	Run tests	2026-10-14T07:18:21.4142612Z 
+build	Run tests	2026-10-14T07:18:21.4142877Z     def test_discount_boundaries():
+build	Run tests	2026-10-14T07:18:21.4143451Z >       assert apply_discount(100, 0) == 101.0
+build	Run tests	2026-10-14T07:18:21.4143996Z E       assert 100.0 == 101.0
+build	Run tests	2026-10-14T07:18:21.4144575Z E        +  where 100.0 = apply_discount(100, 0)
+build	Run tests	2026-10-14T07:18:21.4145019Z 
+build	Run tests	2026-10-14T07:18:21.4145237Z tests/test_pricing.py:11: AssertionError
+build	Run tests	2026-10-14T07:18:21.4145835Z =========================== short test summary info ============================
+build	Run tests	2026-10-14T07:18:21.4146892Z FAILED tests/test_pricing.py::test_discount_boundaries - assert 100.0 == 101.0
+build	Run tests	2026-10-14T07:18:21.4147628Z  +  where 100.0 = apply_discount(100, 0)
+build	Run tests	2026-10-14T07:18:21.4148233Z ========================= 1 failed, 8 passed in 0.04s ==========================
+build	Run tests	2026-10-14T07:18:21.4374581Z ##[error]Process completed with exit code 1.
